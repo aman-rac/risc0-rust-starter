@@ -10,7 +10,7 @@ use risc0_zkvm_core::Digest;
 
 #[derive(Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct HeaderMinusHash{
-    pub n_version: u32,
+    pub n_version: i32,
     pub hash_prev_block: Digest,
     pub hash_merkle_root: Digest,
     pub n_time: u32,
@@ -21,7 +21,7 @@ pub struct HeaderMinusHash{
 
 #[derive(Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct HeaderMinusNonce{
-    pub n_version: u32,
+    pub n_version: i32,
     pub hash_prev_block: Digest,
     pub hash_merkle_root: Digest,
     pub n_time: u32,

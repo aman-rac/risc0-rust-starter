@@ -10,6 +10,7 @@ risc0-zkvm-serde = "0.10"
 [dependencies]
 serde = { version = "1.0", default-features = false }
 risc0-zkvm-core = { version = "0.10", default-features = false, features = ["pure"] }
+bitcoin_hashes = { version = " 0.11.0",  default-features = false }
 
 [package.metadata.risc0]
 methods = ["guest"]

@@ -12,5 +12,6 @@ risc0-build = "0.10"
 #methods = { path = "../" }
 risc0-zkvm-guest = "0.10"
 risc0-zkvm-core = { version = "0.10", default-features = false, features = ["pure"] }
-
+#Andrew-review
+#bitcoin = { version = "0.28.0",  default-features = false, features = ["no-std", "use-serde"] }
 serde = { version = "1.0", default-features = false }

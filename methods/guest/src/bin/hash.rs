@@ -4,19 +4,19 @@
 
 use risc0_zkvm_guest::{env, sha};
 
-//use methods::{HeaderMinusHash, HeaderMinusNonce};
-
-//extern crate alloc;
-//use alloc::{string::String};
 
 risc0_zkvm_guest::entry!(main);
-use risc0_zkvm_core::Digest;
+use risc0_zkvm_core::{Digest};
 
 use serde::{Deserialize, Serialize};
 
+//Andrew-review
+//use bitcoin::blockdata::block::BlockHeader;
+
+
 #[derive(Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct HeaderMinusHash{
-    pub n_version: u32,
+    pub n_version: i32,
     pub hash_prev_block: Digest,
     pub hash_merkle_root: Digest,
     pub n_time: u32,
@@ -27,13 +27,14 @@ pub struct HeaderMinusHash{
 
 #[derive(Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct HeaderMinusNonce{
-    pub n_version: u32,
+    pub n_version: i32,
     pub hash_prev_block: Digest,
     pub hash_merkle_root: Digest,
     pub n_time: u32,
     pub n_bits: u32,
     pub hash: Digest//String//&'const mut str
 }
+
 
 pub fn main() {
 
@@ -43,7 +44,8 @@ pub fn main() {
     //let hash: &'static str = &sha::digest(&header_minus_hash).to_hex();
     
     //let hash = &(sha::digest(&header_minus_hash).to_hex()[..]);
-    let hash = *sha::digest(&header_minus_hash);
+    let hash: &[u32] = sha::digest(&header_minus_hash).as_slice();
+    let hash = Digest::from_slice(hash);
 
     //hashing
     let header_minus_nonce = HeaderMinusNonce{
